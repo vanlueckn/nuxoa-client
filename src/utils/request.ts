@@ -1,12 +1,18 @@
 import { NuxoaApiError } from './errors.js';
 
+interface ApiResponse {
+  code?: number | string;
+  message?: string;
+  [key: string]: unknown;
+}
+
 export async function makeRequest<T>(
   baseUrl: string,
   customerId: string,
   apiKey: string,
   method: string,
   action: string,
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 ): Promise<T> {
   const url = new URL(`${baseUrl}/${customerId}/${apiKey}/${method}/${action}`);
 
@@ -25,13 +31,13 @@ export async function makeRequest<T>(
     },
   });
 
-  const data = await response.json();
+  const data = (await response.json()) as ApiResponse;
 
   if (data.code && data.code !== 100 && data.code !== '100') {
     throw new NuxoaApiError(data.code, data.message, data);
   }
 
-  return data;
+  return data as T;
 }
 
 export async function makePostRequest<T>(
@@ -40,7 +46,7 @@ export async function makePostRequest<T>(
   apiKey: string,
   method: string,
   action: string,
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 ): Promise<T> {
   const url = new URL(`${baseUrl}/${customerId}/${apiKey}/${method}/${action}`);
 
@@ -53,11 +59,11 @@ export async function makePostRequest<T>(
     body: params ? JSON.stringify(params) : undefined,
   });
 
-  const data = await response.json();
+  const data = (await response.json()) as ApiResponse;
 
   if (data.code && data.code !== 100 && data.code !== '100') {
     throw new NuxoaApiError(data.code, data.message, data);
   }
 
-  return data;
+  return data as T;
 }
