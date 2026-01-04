@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/vanlueckn/nuxoa-client/compare/v1.0.0...v1.1.0) (2026-01-04)
+
+
+### ✨ Features
+
+* initial release ([ea999f6](https://github.com/vanlueckn/nuxoa-client/commit/ea999f6c403b5e4fbd3695cbceef57bc1d21a809))
+
+
+### 📚 Documentation
+
+* Update README to clarify client status as unofficial ([0c72eba](https://github.com/vanlueckn/nuxoa-client/commit/0c72eba9c44908bf8f8d70a09eeeeb20a42d0c97))
+
 ## 1.0.0 (2026-01-04)
 
 
