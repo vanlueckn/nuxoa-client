@@ -1,0 +1,60 @@
+{
+  "name": "nuxoa-client",
+  "version": "1.0.0",
+  "description": "TypeScript client for NUXOA API",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target node && bun build ./src/index.ts --outfile ./dist/index.cjs --target node --format cjs",
+    "build:types": "tsc --emitDeclarationOnly --declaration --outDir dist",
+    "test": "bun test",
+    "test:unit": "bun test tests/client.test.ts",
+    "test:integration": "bun test tests/integration/",
+    "prepublishOnly": "bun run build && bun run build:types",
+    "semantic-release": "semantic-release"
+  },
+  "keywords": [
+    "nuxoa",
+    "api",
+    "client",
+    "cloud",
+    "server",
+    "dedicated",
+    "domain",
+    "dns"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanlueckn/nuxoa-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vanlueckn/nuxoa-client/issues"
+  },
+  "homepage": "https://github.com/vanlueckn/nuxoa-client#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/bun": "latest",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "semantic-release": "^23.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,26 @@
+# Environment
+.env
+.env.local
+
+# Build
+dist/
+*.js
+*.cjs
+*.d.ts
+*.d.ts.map
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+coverage/
