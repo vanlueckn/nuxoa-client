@@ -3,6 +3,8 @@
 [![npm version](https://img.shields.io/npm/v/nuxoa-client.svg)](https://www.npmjs.com/package/nuxoa-client)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> ⚠️ **Unofficial**: This is a community-made client and is not officially affiliated with or endorsed by NUXOA.
+
 TypeScript client for the [NUXOA](https://nuxoa.de) API. Manage cloud servers, dedicated servers, domains, DNS records, hosting, and IP addresses programmatically.
 
 ## Installation
