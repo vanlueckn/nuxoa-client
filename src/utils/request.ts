@@ -6,13 +6,13 @@ interface ApiResponse {
   [key: string]: unknown;
 }
 
-export async function makeRequest<T>(
+export async function makeRequest<T, P extends object = object>(
   baseUrl: string,
   customerId: string,
   apiKey: string,
   method: string,
   action: string,
-  params?: Record<string, unknown>
+  params?: P
 ): Promise<T> {
   const url = new URL(`${baseUrl}/${customerId}/${apiKey}/${method}/${action}`);
 
@@ -34,19 +34,19 @@ export async function makeRequest<T>(
   const data = (await response.json()) as ApiResponse;
 
   if (data.code && data.code !== 100 && data.code !== '100') {
-    throw new NuxoaApiError(data.code, data.message, data);
+    throw new NuxoaApiError(data.code, data.message ?? 'Unknown error', data);
   }
 
   return data as T;
 }
 
-export async function makePostRequest<T>(
+export async function makePostRequest<T, P extends object = object>(
   baseUrl: string,
   customerId: string,
   apiKey: string,
   method: string,
   action: string,
-  params?: Record<string, unknown>
+  params?: P
 ): Promise<T> {
   const url = new URL(`${baseUrl}/${customerId}/${apiKey}/${method}/${action}`);
 
@@ -62,7 +62,7 @@ export async function makePostRequest<T>(
   const data = (await response.json()) as ApiResponse;
 
   if (data.code && data.code !== 100 && data.code !== '100') {
-    throw new NuxoaApiError(data.code, data.message, data);
+    throw new NuxoaApiError(data.code, data.message ?? 'Unknown error', data);
   }
 
   return data as T;
